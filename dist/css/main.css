@@ -1,0 +1,422 @@
+/* =============================================================================
+                                variables
+============================================================================= */
+/* =============================================================================
+                                mixins
+============================================================================= */
+/* ===========================
+      Media Query Mixins
+=========================== */
+/* =============================================================================
+                              functions
+============================================================================= */
+/* =============================================================================
+                             .menu-btn
+============================================================================= */
+.menu-btn {
+  position: fixed;
+  top: 35px;
+  right: 35px;
+  z-index: 3;
+  cursor: pointer;
+  transition: all 0.5s ease-out; }
+  .menu-btn .btn-line {
+    width: 28px;
+    height: 3px;
+    margin: 0 0 5px 0;
+    background: #fff;
+    transition: all 0.5s ease-out; }
+  .menu-btn.close {
+    transform: rotate(180deg); }
+    .menu-btn.close .btn-line:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px); }
+    .menu-btn.close .btn-line:nth-child(2) {
+      opacity: 0; }
+    .menu-btn.close .btn-line:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px); }
+
+/* =============================================================================
+                            Menu Overlay
+============================================================================= */
+.menu {
+  display: flex;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  visibility: hidden;
+  /* ===========================
+      Navigation Side (Right)
+  =========================== */
+  /* ===========================
+        Branding Side (Left)
+  =========================== */ }
+  .menu.show {
+    visibility: visible; }
+  .menu-branding, .menu-nav {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    overflow: scroll;
+    /* Without this, the nav links will get in the way. */ }
+  .menu-nav {
+    margin: 0;
+    padding: 0;
+    background: #282c34;
+    list-style: none;
+    transform: translate3d(0, -100%, 0);
+    transition: all 0.5s ease-out; }
+    .menu-nav.show {
+      transform: translate3d(0, 0, 0); }
+  .menu-branding {
+    background: #61DAFB;
+    transform: translate3d(0, 100%, 0);
+    transition: all 0.5s ease-out; }
+    .menu-branding.show {
+      transform: translate3d(0, 0, 0); }
+    .menu-branding .portrait {
+      width: 250px;
+      height: 250px;
+      background: #282c34 url("../img/portrait.png");
+      background-size: 80%;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 50%;
+      border: solid 2px white;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5); }
+  .menu .nav-item {
+    transform: translate3d(600px, 0, 0);
+    transition: all 0.5s ease-out; }
+    .menu .nav-item.show {
+      transform: translate3d(0, 0, 0); }
+    .menu .nav-item.current > a {
+      color: violet; }
+  .menu .nav-link {
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 1rem 0;
+    font-weight: 300;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.15s linear; }
+    .menu .nav-link:hover {
+      color: #61DAFB;
+      letter-spacing: 3px; }
+
+.nav-item:nth-child(1) {
+  transition-delay: 0.1s; }
+
+.nav-item:nth-child(2) {
+  transition-delay: 0.2s; }
+
+.nav-item:nth-child(3) {
+  transition-delay: 0.3s; }
+
+.nav-item:nth-child(4) {
+  transition-delay: 0.4s; }
+
+/* =============================================================================
+                                Core Styles
+============================================================================= */
+* {
+  box-sizing: border-box; }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; }
+
+html {
+  height: 100%;
+  font-family: sans-serif;
+  line-height: 1;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent; }
+
+body {
+  height: auto;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  color: #fff;
+  background: #282c34; }
+  body#bg-img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: url(../img/background.jpg);
+    background-attachment: fixed;
+    background-size: cover; }
+    body#bg-img:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      min-height: 100%;
+      width: 100%;
+      background: rgba(40, 44, 52, 0.9);
+      z-index: -1; }
+
+/* ===========================
+          headings
+=========================== */
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 400; }
+  h1.lg-heading, h2.lg-heading, h3.lg-heading {
+    font-size: 6rem; }
+  h1.sm-heading, h2.sm-heading, h3.sm-heading {
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    background: rgba(51, 56, 66, 0.5);
+    border-radius: 10px; }
+
+/* ===========================
+          links
+=========================== */
+a {
+  color: #fff;
+  text-decoration: none; }
+
+.text-secondary {
+  color: #61DAFB; }
+
+/* ===========================
+        Button Styles
+=========================== */
+.btn, .btn-secondary, .btn-tertiary {
+  display: block;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 0; }
+  .btn:hover, .btn-secondary:hover, .btn-tertiary:hover {
+    background: #61DAFB;
+    color: #000; }
+
+.btn-secondary {
+  background: #61DAFB;
+  color: white; }
+  .btn-secondary:hover {
+    background: #2fcefa;
+    color: white; }
+
+.btn-tertiary {
+  background: violet;
+  color: white; }
+  .btn-tertiary:hover {
+    background: #e855e8;
+    color: white; }
+
+/* ===========================
+          header
+=========================== */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2; }
+
+/* ===========================
+          main
+=========================== */
+main {
+  padding: 4rem; }
+  main .icons {
+    margin-top: 1rem; }
+    main .icons a {
+      padding: 0.4rem;
+      transition: all 0.5s ease-out; }
+      main .icons a:hover {
+        color: #61DAFB; }
+  main#home h1 {
+    margin-top: 20vh; }
+
+/* ===========================
+        .about-info
+=========================== */
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas: 'bioimage bio  bio' 'job1     job2 job3';
+  grid-template-columns: repeat(3, 1fr); }
+  .about-info .bio-image {
+    grid-area: bioimage;
+    margin: auto;
+    padding: 10px;
+    border: #61DAFB 2px solid;
+    border-radius: 50%; }
+  .about-info .bio-image img {
+    display: block;
+    margin: 0 auto; }
+  .about-info .bio {
+    grid-area: bio;
+    font-size: 1.5rem; }
+  .about-info .job-1 {
+    grid-area: job1; }
+  .about-info .job-2 {
+    grid-area: job2; }
+  .about-info .job-3 {
+    grid-area: job3; }
+  .about-info .job {
+    background: #333842;
+    padding: 0.5rem;
+    border-bottom: #61DAFB 5px solid; }
+
+/* ===========================
+        Work/Projects
+=========================== */
+.projects {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(3, 1fr); }
+  .projects img {
+    display: block;
+    width: 100%;
+    transition: all 0.25s linear; }
+    .projects img:hover {
+      transform: scale(1.25); }
+
+.projects .item {
+  margin: 0;
+  padding: 0; }
+
+.projects > .item a:first-of-type {
+  display: block;
+  margin: 0 0 0.5rem 0;
+  padding: 0;
+  border: 2px white solid;
+  overflow: hidden; }
+
+/* ===========================
+        Contact Page
+=========================== */
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 100px;
+  align-items: center; }
+  .boxes div {
+    font-size: 2rem;
+    border: 2px white solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem; }
+    .boxes div:hover {
+      background: #61DAFB;
+      color: #000; }
+      .boxes div:hover span:nth-of-type(1) {
+        color: #000; }
+
+/* ===========================
+        #footer
+=========================== */
+#footer {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-size: 1.25rem;
+  color: #fff;
+  background: #1d2026;
+  border-top: 0.5px solid rgba(255, 255, 255, 0.75); }
+
+/* ===========================
+       Widescreens
+=========================== */
+@media screen and (min-width: 1171px) {
+  .projects {
+    grid-template-columns: repeat(4, 1fr); } }
+
+/* ===========================
+    Desktops & Laptops
+=========================== */
+@media screen and (min-width: 769px) and (max-width: 1170px) {
+  .boxes > div {
+    width: 90%; }
+  .projects {
+    grid-template-columns: repeat(3, 1fr); } }
+
+/* ===========================
+    Tablets & Small Laptops
+=========================== */
+@media screen and (max-width: 768px) {
+  .menu-btn {
+    top: 25px;
+    right: 25px; }
+  main {
+    align-items: center;
+    text-align: center; }
+    main .lg-heading {
+      line-height: 1;
+      margin-bottom: 1rem; }
+  ul.menu-nav,
+  div.menu-branding {
+    width: 100%; }
+    ul.menu-nav.show,
+    div.menu-branding.show {
+      transform: translate3d(0, 0, 0); }
+  .menu {
+    flex-direction: column;
+    overflow: scroll; }
+  .menu-branding {
+    height: auto;
+    padding: 10px 0;
+    transform: translate3d(100%, 0, 0); }
+    .menu-branding .portrait {
+      height: 150px;
+      width: 150px;
+      background: #282c34 url("../img/portrait_small.png");
+      background-size: 80%;
+      background-position: center;
+      background-repeat: no-repeat; }
+  .menu-nav {
+    flex: 1;
+    height: auto;
+    padding-top: 50px;
+    transform: translate3d(-100%, 0, 0);
+    font-size: 24px;
+    justify-content: start; }
+    .menu-nav .nav-item a {
+      font-size: 24px; }
+  .about-info {
+    grid-template-areas: 'bioimage' 'bio' 'job1' 'job2' 'job3';
+    grid-template-columns: 1fr; }
+  .boxes > div {
+    width: 90%;
+    padding: 5px; }
+    .boxes > div span {
+      display: block; }
+  .projects {
+    grid-template-columns: repeat(2, 1fr); } }
+
+/* ===========================
+        Smartphones
+=========================== */
+@media screen and (max-width: 500px) {
+  .menu-btn {
+    top: 25px;
+    right: 25px; }
+  main {
+    padding: 2rem; }
+    main #home h1 {
+      margin-top: 10vh; }
+    main .lg-heading {
+      margin-top: 1rem;
+      font-size: 5rem; }
+  .boxes > div {
+    width: 90%;
+    padding: 5px;
+    font-size: 20px; }
+    .boxes > div span {
+      display: block; }
+  .projects {
+    grid-template-columns: 1fr; } }
